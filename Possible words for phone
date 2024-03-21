@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<string>ans;
+vector<string>keys={"","","abc","efg","hij","klm","nop","qrs","tuv","wxyz"};
+
+void possiblewords(vector<int>arr, string temp, int index){
+    if(index==arr.size()){
+        ans.push_back(temp);
+        return;
+    }
+    for(int i=0;i<keys[arr[index]].size();i++){
+        possiblewords(arr, temp+keys[arr[index]][i], index+1);
+    }
+}
+int main() {
+	// your code goes here
+    int n;
+    cin>>n;
+    
+    vector<int>arr;
+    for(int i=0;i<n;i++){
+        int temp;
+        cin>>temp;
+        
+        arr.push_back(temp);
+    }
+    possiblewords(arr, "", 0);
+    
+    for(int i=0;i<ans.size();i++){
+        cout<<ans[i]<<" ";
+    }
+}
