@@ -7,7 +7,7 @@ void permute(vector<int>arr, int index){
         return;
     }
     
-    for(int i=0;i<arr.size();i++){
+    for(int i=index;i<arr.size();i++){
         swap(arr[index],arr[i]);
         permute(arr, index+1);
         swap(arr[index], arr[i]);   //backtracking
