@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+vector<vector<int>>ans;
+void subsets(vector<int>arr,vector<int>temp,  int n, int index){
+    if(index==n){
+        ans.push_back(temp);
+        return;
+    }
+    temp.push_back(arr[index]);
+    //take
+    subsets(arr, temp, n, index+1);
+    temp.pop_back();
+    
+    //not take
+    subsets(arr,temp,n, index+1);
+}
+int main() {
+	// your code goes here
+    int n;
+    cin>>n;
+    vector<int>arr;
+    for(int i=0;i<n;i++){
+        int temp;
+        cin>>temp;
+        arr.push_back(temp);
+    }
+    vector<int>temp;
+    subsets(arr, temp, n, 0);
+    
+    for(int i=0;i<ans.size();i++){
+        for(int j=0;j<ans[0].size();j++){
+            cout<<ans[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
